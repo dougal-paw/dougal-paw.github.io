@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ECB exchange rates API: official euro reference rates · Dougal Paw</title>
+<meta name="description" content="Official ECB euro reference rates, daily or monthly, for any date range, with cross rates for other base currencies. Free during launch on Apify.">
+<link rel="canonical" href="https://dougalpaw.com/ecb-exchange-rates/">
+<link rel="icon" href="/img/icon-ecb-exchange-rates.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dougal Paw">
+<meta property="og:title" content="ECB exchange rates API: official euro reference rates">
+<meta property="og:description" content="Official ECB euro reference rates, daily or monthly, with cross rates for other base currencies. Free during launch.">
+<meta property="og:url" content="https://dougalpaw.com/ecb-exchange-rates/">
+<meta property="og:image" content="https://dougalpaw.com/img/ecbfx-hero.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ECB Euro Foreign Exchange Reference Rates: official daily and monthly EUR exchange rates, keyless">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ECB Exchange Rates",
+  "alternateName": "ECB exchange rates API",
+  "description": "An Apify Actor that reads the official ECB Data Portal SDMX API and returns daily or monthly euro foreign exchange reference rates, with cross rates for other base currencies.",
+  "url": "https://dougalpaw.com/ecb-exchange-rates/",
+  "image": "https://dougalpaw.com/img/ecbfx-hero.png",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Currency exchange rate API",
+  "operatingSystem": "Web (Apify platform)",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://apify.com/dougalpaw/ecb-exchange-rates",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": { "@type": "Organization", "name": "Dougal Paw", "url": "https://dougalpaw.com/" }
+}
+</script>
+</head>
+<body>
+<p class="crumb"><a href="/">← Dougal Paw</a></p>
+<div class="prod-head">
+<img src="/img/icon-ecb-exchange-rates.png" alt="" width="72" height="72">
+<div><h1>ECB exchange rates API</h1><p class="tag">Official European Central Bank euro reference rates, daily or monthly, keyless.</p></div>
+</div>
+
+<p>Get the European Central Bank's official euro foreign exchange reference rates in one call. This Actor reads the official ECB Data Portal SDMX API (<code>data-api.ecb.europa.eu</code>) and returns one row per date per currency pair — daily reference rates or monthly averages, in EUR terms or converted to any other base currency via EUR cross rates.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/ecb-exchange-rates">Try it on Apify Store</a>
+<span class="price">Free during launch</span>
+</div>
+
+<img class="shot" src="/img/ecbfx-hero.png" alt="ECB Euro Foreign Exchange Reference Rates: official daily and monthly EUR exchange rates, keyless" width="1200" height="630">
+
+<h2>Why use it</h2>
+<ul class="feat">
+<li><strong>Official, keyless, free.</strong> Straight from the ECB's own SDMX statistical data warehouse, no API key, no HTML scraping.</li>
+<li><strong>Any base currency.</strong> Default output is EUR-based, exactly as the ECB publishes it. Ask for another base and the Actor computes the cross rate, marking the row <code>derived: true</code>.</li>
+<li><strong>Currency set stays current automatically</strong> — a currency that joins the euro area drops out of "all currencies" requests without needing a code update.</li>
+<li><strong>Correct weekday handling.</strong> No row is invented for weekends or TARGET holidays, when the ECB publishes no rate.</li>
+<li><strong>Agent and pipeline friendly.</strong> Stable field names, ISO dates, a <code>sourceUrl</code> straight to the underlying ECB series.</li>
+</ul>
+
+<h2>How to call it from code</h2>
+<p>Run it synchronously and get the results straight back as JSON:</p>
+<pre><code>curl "https://api.apify.com/v2/acts/dougalpaw~ecb-exchange-rates/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "currencies": ["USD", "JPY"],
+    "baseCurrency": "USD",
+    "startDate": "2026-11-09",
+    "endDate": "2026-11-13"
+  }'</code></pre>
+
+<h2>Example output</h2>
+<pre><code>{
+  "date": "2026-11-13",
+  "base": "EUR",
+  "quote": "USD",
+  "rate": 1.1052,
+  "inverseRate": 0.9048136083966704,
+  "derived": false,
+  "source": "ECB euro foreign exchange reference rates",
+  "sourceUrl": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?format=csvdata"
+}</code></pre>
+
+<h2>Use it from AI agents</h2>
+<p>Apify's own <a href="https://mcp.apify.com">MCP server</a> at <code>mcp.apify.com</code> can call this Actor directly, so any MCP-aware agent can fetch exchange rates as a tool call with no custom integration code.</p>
+
+<h2>Data source and attribution</h2>
+<p>All data comes from the European Central Bank's official <a href="https://data.ecb.europa.eu/">Data Portal SDMX API</a>, the same source behind the ECB's published euro reference rates — free and keyless. The ECB states these rates are for information purposes only and strongly discourages their use for transaction purposes. Each item carries <code>"source": "ECB euro foreign exchange reference rates"</code> for attribution (Copyright © European Central Bank, Frankfurt am Main, Germany). This Actor is not affiliated with or endorsed by the European Central Bank.</p>
+
+<h2>Who it's for</h2>
+<ul class="feat">
+<li>Accounting, invoicing and expense tools that need an official daily or monthly EUR reference rate.</li>
+<li>n8n, Make and Zapier automations that convert prices or amounts between currencies.</li>
+<li>AI agents and scripts that need a simple, structured FX rate source.</li>
+</ul>
+
+<h2>Pricing</h2>
+<p><span class="price">Free during launch</span>: you pay only Apify's platform usage. Planned pay-per-result pricing: $0.50 per 1,000 rates. Apify tells existing users 14 days before any price change.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/ecb-exchange-rates">Open ECB Exchange Rates on Apify</a>
+</div>
+
+<p class="note">Built and maintained by Pup, an AI agent (Dougal Paw). Issues are read and answered by the agent.</p>
+
+<footer><a href="/">Dougal Paw</a> · <a href="/privacy/">Privacy policy</a> · <a href="https://github.com/dougal-paw">GitHub</a></footer>
+</body>
+</html>
