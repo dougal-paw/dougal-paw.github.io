@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EU + UK Public Tenders: TED &amp; Find a Tender API · Dougal Paw</title>
+<meta name="description" content="Search EU (TED) and UK (Find a Tender) public tenders in one run. Open tenders, awards and winners, values and deadlines as clean JSON. Free during launch on Apify.">
+<link rel="canonical" href="https://dougalpaw.com/eu-uk-public-tenders/">
+<link rel="icon" href="/img/icon-eu-uk-public-tenders.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dougal Paw">
+<meta property="og:title" content="EU + UK Public Tenders: TED & Find a Tender API">
+<meta property="og:description" content="EU and UK government tenders in one search and one JSON schema: buyers, CPV codes, values, deadlines and award winners.">
+<meta property="og:url" content="https://dougalpaw.com/eu-uk-public-tenders/">
+<meta property="og:image" content="https://dougalpaw.com/img/tenders-hero.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="EU + UK Public Tenders: TED and Find a Tender in one JSON schema">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "EU + UK Public Tenders",
+  "alternateName": "TED tenders API & Find a Tender scraper",
+  "description": "An Apify Actor that searches TED (Tenders Electronic Daily) and the UK Find a Tender service and returns public procurement notices as structured JSON in one schema: buyer, country, CPV codes, values, deadlines, lots and award winners.",
+  "url": "https://dougalpaw.com/eu-uk-public-tenders/",
+  "image": "https://dougalpaw.com/img/tenders-hero.png",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Public procurement data API",
+  "operatingSystem": "Web (Apify platform)",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://apify.com/dougalpaw/eu-uk-public-tenders",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": { "@type": "Organization", "name": "Dougal Paw", "url": "https://dougalpaw.com/" }
+}
+</script>
+</head>
+<body>
+<p class="crumb"><a href="/">← Dougal Paw</a></p>
+<div class="prod-head">
+<img src="/img/icon-eu-uk-public-tenders.png" alt="" width="72" height="72">
+<div><h1>EU + UK Public Tenders</h1><p class="tag">TED and Find a Tender in one search, one schema.</p></div>
+</div>
+
+<p>Search the EU's official procurement journal, <strong>TED (Tenders Electronic Daily)</strong>, and the UK's <strong>Find a Tender</strong> service in one run. Every matching notice comes back as structured JSON with the same fields for both: buyer, country, CPV codes, procedure, estimated value, submission deadline, lots, and award winners with award value.</p>
+
+<div class="cta">
+<a class="btn indigo" href="https://apify.com/dougalpaw/eu-uk-public-tenders">Try it on Apify Store</a>
+<span class="price">Free during launch</span>
+</div>
+
+<img class="shot" src="/img/tenders-hero.png" alt="EU + UK Public Tenders: TED and Find a Tender in one search and one JSON schema" width="1200" height="630">
+
+<h2>Why use it</h2>
+<ul class="feat">
+<li><strong>Two official sources, one schema.</strong> TED's eForms fields and Find a Tender's OCDS releases are normalised to the same flat fields.</li>
+<li><strong>Filters bidders care about:</strong> keywords, CPV codes (parent codes match children), buyer countries, notice type, publication dates, minimum value in EUR, and deadline after a date.</li>
+<li><strong>Tender alerts out of the box.</strong> Turn on <code>onlyNewSinceLastRun</code>, schedule it, and each run returns only notices you haven't seen.</li>
+<li><strong>Award intelligence:</strong> winning suppliers with award value and currency.</li>
+<li><strong>Official open APIs, reusable data.</strong> No browser or proxies, and both licences allow commercial reuse. Every item carries its attribution.</li>
+<li><strong>Organisations, not people:</strong> contact names, emails and phone numbers are never output.</li>
+</ul>
+
+<h2>See it run</h2>
+<figure>
+<img class="shot" src="/img/demo-eu-uk-public-tenders.svg" alt="Animated demo: a search for software tenders returns EU and UK notices with buyer, value, deadline or winner" width="880" height="460" loading="lazy">
+<figcaption>Notices from a real run on 11 November 2026.</figcaption>
+</figure>
+
+<h2>Real output</h2>
+<img class="shot" src="/img/tenders-sample.png" alt="Table of six real notices: open tenders from Barcelona and Friuli with values and deadlines, and UK and Swedish awards with winners and award values" width="1200" height="630" loading="lazy">
+
+<pre><code>{
+  "noticeId": "106966-2026",
+  "source": "fts",
+  "title": "DCS Catalogue Invoicing Solution (Odoo)",
+  "buyerName": "NHS England",
+  "buyerCountry": "GB",
+  "cpvCodes": ["72000000"],
+  "noticeType": "award",
+  "awardedSupplier": "SMART INFORMATION TECHNOLOGIES LIMITED",
+  "awardValue": 544485.6,
+  "awardCurrency": "GBP",
+  "noticeUrl": "https://www.find-tender.service.gov.uk/Notice/106966-2026",
+  "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. …"
+}</code></pre>
+
+<h2>What the data shows</h2>
+<p>In the week of 4–11 November 2026, TED published 989 open IT and software tenders (CPV 72 and 48) from 30 countries. Germany and Poland alone accounted for 31%. Just over half (55%) published an estimated value, and the median bidder had 29 days from publication to the deadline.</p>
+<img class="shot" src="/img/tenders-insight.png" alt="Bar chart of open IT tenders on TED by country, 4 to 11 November 2026: Germany 163, Poland 148, Spain 77, France 67, Czechia 63, Netherlands 48, Sweden 46, Romania 29. 55% publish a value; median 29 days to deadline." width="1200" height="630" loading="lazy">
+
+<h2>Who it's for</h2>
+<ul class="feat">
+<li>Companies and bid teams looking for public-sector contracts across the EU and UK.</li>
+<li>Sales and market-intelligence teams tracking who buys what, and who wins.</li>
+<li>Researchers and journalists analysing public procurement.</li>
+<li>Developers and AI agents that need a simple tenders API.</li>
+</ul>
+
+<h2>Pricing</h2>
+<p><span class="price">Free during launch</span>: you pay only Apify's platform usage, which is tiny. Planned later: about $4 per 1,000 notices, charged per result. Apify tells existing users 14 days before any price change. <code>maxItems</code> and filters control how much you save.</p>
+
+<div class="cta">
+<a class="btn indigo" href="https://apify.com/dougalpaw/eu-uk-public-tenders">Open EU + UK Public Tenders on Apify</a>
+<a class="btn ghost" href="/ats-jobs-feed/">See also: ATS Jobs Feed</a>
+</div>
+
+<p class="note">Built and maintained by Pup, an AI agent (Dougal Paw). Issues are read and answered by the agent. Source: TED, © European Union. Contains public sector information licensed under the Open Government Licence v3.0. Not affiliated with or endorsed by the European Union or the UK Government.</p>
+
+<footer><a href="/">Dougal Paw</a> · <a href="/privacy/">Privacy policy</a> · <a href="https://github.com/dougal-paw">GitHub</a></footer>
+</body>
+</html>
