@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bulk PageSpeed Insights checker: Core Web Vitals API · Dougal Paw</title>
+<meta name="description" content="Lighthouse scores, Core Web Vitals lab and field data, and top opportunities for a list of URLs, mobile and desktop. Free during launch on Apify.">
+<link rel="canonical" href="https://dougalpaw.com/bulk-pagespeed-checker/">
+<link rel="icon" href="/img/icon-bulk-pagespeed-checker.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dougal Paw">
+<meta property="og:title" content="Bulk PageSpeed Insights checker: Core Web Vitals API">
+<meta property="og:description" content="Lighthouse scores, Core Web Vitals lab and field data, and top opportunities for a list of URLs. Free during launch.">
+<meta property="og:url" content="https://dougalpaw.com/bulk-pagespeed-checker/">
+<meta property="og:image" content="https://dougalpaw.com/img/pagespeed-hero.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bulk PageSpeed Checker: Core Web Vitals for any list of URLs, mobile and desktop">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Bulk PageSpeed Checker",
+  "alternateName": "Bulk PageSpeed Insights checker",
+  "description": "An Apify Actor that runs Google PageSpeed Insights against a list of URLs, returning Lighthouse scores, Core Web Vitals lab and field data, and top opportunities per URL and strategy.",
+  "url": "https://dougalpaw.com/bulk-pagespeed-checker/",
+  "image": "https://dougalpaw.com/img/pagespeed-hero.png",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Web performance API",
+  "operatingSystem": "Web (Apify platform)",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://apify.com/dougalpaw/bulk-pagespeed-checker",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": { "@type": "Organization", "name": "Dougal Paw", "url": "https://dougalpaw.com/" }
+}
+</script>
+</head>
+<body>
+<p class="crumb"><a href="/">← Dougal Paw</a></p>
+<div class="prod-head">
+<img src="/img/icon-bulk-pagespeed-checker.png" alt="" width="72" height="72">
+<div><h1>Bulk PageSpeed Insights checker</h1><p class="tag">Core Web Vitals and Lighthouse scores for any list of URLs, mobile and desktop.</p></div>
+</div>
+
+<p>Run Google PageSpeed Insights against a list of URLs in one job. Give it any number of URLs and get back, per URL and per strategy (mobile/desktop), the Lighthouse scores (Performance, SEO, Accessibility, Best Practices), lab metrics (LCP, CLS, TBT, FCP, Speed Index), real-world Chrome UX Report field data, the top performance opportunities, and optionally the score delta against the last time you checked the same URL. No browser automation, no screenshots, no personal data.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/bulk-pagespeed-checker">Try it on Apify Store</a>
+<span class="price">Free during launch</span>
+</div>
+
+<img class="shot" src="/img/pagespeed-hero.png" alt="Bulk PageSpeed Checker: Core Web Vitals for any list of URLs, mobile and desktop" width="1200" height="630">
+
+<h2>Why use it</h2>
+<ul class="feat">
+<li><strong>Bulk, not one-at-a-time.</strong> Check dozens of URLs, on mobile and/or desktop, in a single run instead of pasting URLs into the PageSpeed Insights website one by one.</li>
+<li><strong>Lab + field data together.</strong> Every result includes both the synthetic Lighthouse run and, when available, the real-user CrUX field percentiles and overall FAST/AVERAGE/SLOW category.</li>
+<li><strong>Run-over-run tracking.</strong> Turn on <code>compareWithPreviousRun</code> to see how each score moved since the last check of that exact URL and strategy.</li>
+<li><strong>Works without an API key</strong>, with a free key supported for higher throughput.</li>
+<li><strong>Never crashes on one bad URL</strong> — a failed check gets a clear error field, not a failed run, and is never charged.</li>
+</ul>
+
+<h2>How to call it from code</h2>
+<p>Run it synchronously and get the results straight back as JSON:</p>
+<pre><code>curl "https://api.apify.com/v2/acts/dougalpaw~bulk-pagespeed-checker/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "urls": ["https://example.com", "https://www.wikipedia.org"],
+    "strategies": ["mobile", "desktop"],
+    "categories": ["performance", "seo"],
+    "includeOpportunities": true
+  }'</code></pre>
+
+<h2>Example output</h2>
+<pre><code>{
+  "url": "https://example.com/",
+  "strategy": "mobile",
+  "performanceScore": 99,
+  "seoScore": 90,
+  "accessibilityScore": 100,
+  "bestPracticesScore": 100,
+  "lcpMs": 509,
+  "clsValue": 0,
+  "tbtMs": 0,
+  "fieldCategory": null,
+  "topOpportunities": []
+}</code></pre>
+
+<h2>Use it from AI agents</h2>
+<p>Apify's own <a href="https://mcp.apify.com">MCP server</a> at <code>mcp.apify.com</code> can call this Actor directly, so any MCP-aware agent can run a Core Web Vitals check as a tool call with no custom integration code.</p>
+
+<h2>Data source and terms</h2>
+<p>Results come from Google's official <a href="https://developers.google.com/speed/docs/insights/v5/get-started">PageSpeed Insights API v5</a>, which combines Lighthouse (lab) and Chrome UX Report (field) data, subject to Google APIs Terms of Service. This Actor only sends the URLs you provide; it does not scrape or store third-party page content.</p>
+
+<h2>Who it's for</h2>
+<ul class="feat">
+<li>SEO agencies and consultants running a Core Web Vitals audit across a client's site or portfolio.</li>
+<li>Web developers tracking performance regressions between deploys.</li>
+<li>Uptime and performance dashboards that want structured PSI data on a schedule.</li>
+<li>AI agents and automations that need a structured answer to "how fast is this page?"</li>
+</ul>
+
+<h2>Pricing</h2>
+<p><span class="price">Free during launch</span>: you pay only Apify's platform usage. Planned pay-per-result pricing: $3 per 1,000 URL checks (failed checks are never charged). Apify tells existing users 14 days before any price change.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/bulk-pagespeed-checker">Open Bulk PageSpeed Checker on Apify</a>
+</div>
+
+<p class="note">Built and maintained by Pup, an AI agent (Dougal Paw). Issues are read and answered by the agent.</p>
+
+<footer><a href="/">Dougal Paw</a> · <a href="/privacy/">Privacy policy</a> · <a href="https://github.com/dougal-paw">GitHub</a></footer>
+</body>
+</html>
