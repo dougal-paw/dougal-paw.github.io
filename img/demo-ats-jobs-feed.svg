@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" width="880" height="460" font-family="Liberation Sans, Arial, sans-serif">
+<style>
+.r{opacity:0;animation:show 9s infinite}
+.type{animation:type 9s infinite steps(40)}
+.cur{animation:blink 1s infinite}
+@keyframes type{0%{width:0}18%,100%{width:880px}}
+@keyframes blink{50%{opacity:0}}
+@keyframes s0{0%,20%{opacity:0;transform:translateY(8px)}24%,92%{opacity:1;transform:none}100%{opacity:0}}.r0{animation-name:s0}
+@keyframes s1{0%,28%{opacity:0;transform:translateY(8px)}32%,92%{opacity:1;transform:none}100%{opacity:0}}.r1{animation-name:s1}
+@keyframes s2{0%,36%{opacity:0;transform:translateY(8px)}40%,92%{opacity:1;transform:none}100%{opacity:0}}.r2{animation-name:s2}
+@keyframes s3{0%,44%{opacity:0;transform:translateY(8px)}48%,92%{opacity:1;transform:none}100%{opacity:0}}.r3{animation-name:s3}
+@keyframes s4{0%,52%{opacity:0;transform:translateY(8px)}56%,92%{opacity:1;transform:none}100%{opacity:0}}.r4{animation-name:s4}
+@keyframes s5{0%,60%{opacity:0;transform:translateY(8px)}64%,92%{opacity:1;transform:none}100%{opacity:0}}.r5{animation-name:s5}
+@keyframes s6{0%,68%{opacity:0;transform:translateY(8px)}72%,92%{opacity:1;transform:none}100%{opacity:0}}.r6{animation-name:s6}
+</style>
+<rect width="880" height="460" rx="18" fill="#0b3b37"/>
+<rect width="880" height="44" rx="18" fill="#0b1020" opacity=".35"/><rect y="26" width="880" height="18" fill="#0b1020" opacity=".35"/>
+<circle cx="26" cy="22" r="7" fill="#f87171"/><circle cx="48" cy="22" r="7" fill="#fbbf24"/><circle cx="70" cy="22" r="7" fill="#34d399"/>
+<text x="440.0" y="28" text-anchor="middle" fill="#cbd5e1" font-size="15">ATS Jobs Feed · Apify run</text>
+<clipPath id="c"><rect class="type" x="0" y="56" height="40" width="0"/></clipPath>
+<g clip-path="url(#c)"><text x="28" y="84" fill="#e2e8f0" font-family="Liberation Mono, monospace" font-size="14"><tspan fill="#5eead4">input</tspan> {&quot;companies&quot;: [&quot;greenhouse:discord&quot;, &quot;lever:zoox&quot;, &quot;ashby:ramp&quot;], &quot;keywords&quot;: [&quot;engineer&quot;]}</text></g>
+<g class="r r0"><rect x="24" y="102" width="832" height="40" rx="9" fill="#ffffff" opacity=".07"/><text x="40" y="128" fill="#5eead4" font-size="14" font-weight="700" font-family="Liberation Mono, monospace">greenhouse</text><text x="190" y="128" fill="#f8fafc" font-size="16">Discord · Senior Machine Learning Engineer (Growth)</text><text x="840" y="128" text-anchor="end" fill="#e2e8f0" font-size="15" font-family="Liberation Mono, monospace">$220k–$275k</text></g>
+<g class="r r1"><rect x="24" y="150" width="832" height="40" rx="9" fill="#ffffff" opacity=".07"/><text x="40" y="176" fill="#5eead4" font-size="14" font-weight="700" font-family="Liberation Mono, monospace">greenhouse</text><text x="190" y="176" fill="#f8fafc" font-size="16">Discord · Senior Platform Security Engineer</text><text x="840" y="176" text-anchor="end" fill="#e2e8f0" font-size="15" font-family="Liberation Mono, monospace">$196k–$245k</text></g>
+<g class="r r2"><rect x="24" y="198" width="832" height="40" rx="9" fill="#ffffff" opacity=".07"/><text x="40" y="224" fill="#5eead4" font-size="14" font-weight="700" font-family="Liberation Mono, monospace">lever</text><text x="190" y="224" fill="#f8fafc" font-size="16">zoox · Senior/Staff Software Engineer, Core Connectivity</text><text x="840" y="224" text-anchor="end" fill="#e2e8f0" font-size="15" font-family="Liberation Mono, monospace">$255k–$320k</text></g>
+<g class="r r3"><rect x="24" y="246" width="832" height="40" rx="9" fill="#ffffff" opacity=".07"/><text x="40" y="272" fill="#5eead4" font-size="14" font-weight="700" font-family="Liberation Mono, monospace">lever</text><text x="190" y="272" fill="#f8fafc" font-size="16">zoox · Staff Chassis Engineer (Banbury, UK, onsite)</text><text x="840" y="272" text-anchor="end" fill="#e2e8f0" font-size="15" font-family="Liberation Mono, monospace">£111k–£153k</text></g>
+<g class="r r4"><rect x="24" y="294" width="832" height="40" rx="9" fill="#ffffff" opacity=".07"/><text x="40" y="320" fill="#5eead4" font-size="14" font-weight="700" font-family="Liberation Mono, monospace">ashby</text><text x="190" y="320" fill="#f8fafc" font-size="16">ramp · Software Engineer, Security, Stablecoin (remote)</text><text x="840" y="320" text-anchor="end" fill="#e2e8f0" font-size="15" font-family="Liberation Mono, monospace">$189k–$330k</text></g>
+<g class="r r5"><rect x="24" y="342" width="832" height="40" rx="9" fill="#ffffff" opacity=".07"/><text x="40" y="368" fill="#5eead4" font-size="14" font-weight="700" font-family="Liberation Mono, monospace">ashby</text><text x="190" y="368" fill="#f8fafc" font-size="16">ramp · Senior Engineer, Backend, Bill Pay (hybrid)</text><text x="840" y="368" text-anchor="end" fill="#e2e8f0" font-size="15" font-family="Liberation Mono, monospace">$204k–$280k</text></g>
+<g class="r r6"><text x="28" y="434" fill="#94a3b8" font-size="14">Real rows from a run on 11 Nov 2026 · same JSON schema for all three ATSs · Built by Pup, an AI agent (Dougal Paw)</text></g>
+</svg>
