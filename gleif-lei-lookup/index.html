@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LEI lookup API: GLEIF legal entity identifier data · Dougal Paw</title>
+<meta name="description" content="Find legal entities by name or LEI in the open GLEIF database, with status, addresses, renewal dates and parent companies. Free during launch on Apify.">
+<link rel="canonical" href="https://dougalpaw.com/gleif-lei-lookup/">
+<link rel="icon" href="/img/icon-gleif-lei-lookup.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dougal Paw">
+<meta property="og:title" content="LEI lookup API: GLEIF legal entity identifier data">
+<meta property="og:description" content="Find legal entities by name or LEI in the open GLEIF database, with status, addresses and parent companies. Free during launch.">
+<meta property="og:url" content="https://dougalpaw.com/gleif-lei-lookup/">
+<meta property="og:image" content="https://dougalpaw.com/img/gleif-hero.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="GLEIF LEI Company Lookup: look up legal entities by LEI or name, free during launch">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GLEIF LEI Lookup",
+  "alternateName": "LEI lookup API",
+  "description": "An Apify Actor that reads the official GLEIF API for given LEIs or company names and returns registered legal name, status, legal form, jurisdiction, addresses and parent companies.",
+  "url": "https://dougalpaw.com/gleif-lei-lookup/",
+  "image": "https://dougalpaw.com/img/gleif-hero.png",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "KYB / entity data API",
+  "operatingSystem": "Web (Apify platform)",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://apify.com/dougalpaw/gleif-lei-lookup",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": { "@type": "Organization", "name": "Dougal Paw", "url": "https://dougalpaw.com/" }
+}
+</script>
+</head>
+<body>
+<p class="crumb"><a href="/">← Dougal Paw</a></p>
+<div class="prod-head">
+<img src="/img/icon-gleif-lei-lookup.png" alt="" width="72" height="72">
+<div><h1>LEI lookup API</h1><p class="tag">Legal entity identifier data from the open GLEIF database, by LEI or company name.</p></div>
+</div>
+
+<p>Look up any legally-registered company's LEI record in one run. This Actor reads the official GLEIF API (<code>api.gleif.org</code>) for the LEIs or company names you give it, and returns one row per entity — registered legal name, status, legal form, jurisdiction, legal and headquarters addresses, registration dates, and optionally direct and ultimate parent companies.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/gleif-lei-lookup">Try it on Apify Store</a>
+<span class="price">Free during launch</span>
+</div>
+
+<img class="shot" src="/img/gleif-hero.png" alt="GLEIF LEI Company Lookup: look up legal entities by LEI or name, free during launch" width="1200" height="630">
+
+<h2>Why use it</h2>
+<ul class="feat">
+<li><strong>Two lookup modes.</strong> Exact LEIs for direct lookups, company names for fuzzy legal-name search, or both in the same run.</li>
+<li><strong>Parent companies on request.</strong> With <code>includeParents</code>, each row also carries its direct parent and ultimate parent, when GLEIF has them on file.</li>
+<li><strong>Legal entities only.</strong> Sole-trader registrations (natural persons) are filtered out before they reach the output, so no personal data is returned.</li>
+<li><strong>Official, keyless, free.</strong> GLEIF's Golden Copy data is public domain (CC0).</li>
+<li><strong>Agent and pipeline friendly.</strong> Stable field names, a direct <code>sourceUrl</code> and an <code>attribution</code> field on every item.</li>
+</ul>
+
+<h2>How to call it from code</h2>
+<p>Run it synchronously and get the results straight back as JSON:</p>
+<pre><code>curl "https://api.apify.com/v2/acts/dougalpaw~gleif-lei-lookup/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "leis": ["5493001KJTIIGC8Y1R12"],
+    "names": ["Apple Inc"],
+    "includeParents": true
+  }'</code></pre>
+
+<h2>Example output</h2>
+<pre><code>{
+  "lei": "5493001KJTIIGC8Y1R12",
+  "legalName": "Bloomberg Finance L.P.",
+  "status": { "entity": "ACTIVE", "registration": "ISSUED" },
+  "jurisdiction": "US-DE",
+  "legalAddress": { "city": "Wilmington", "country": "US", "postalCode": "19808" },
+  "nextRenewalDate": "2027-01-25T16:50:02Z",
+  "directParent": { "lei": "549300B56MD0ZC402L06", "legalName": "Bloomberg L.P." },
+  "sourceUrl": "https://search.gleif.org/#/record/5493001KJTIIGC8Y1R12",
+  "attribution": "Contains LEI data from GLEIF (CC0)"
+}</code></pre>
+
+<h2>Use it from AI agents</h2>
+<p>Apify's own <a href="https://mcp.apify.com">MCP server</a> at <code>mcp.apify.com</code> can call this Actor directly, so any MCP-aware agent can run an LEI lookup as a tool call with no custom integration code.</p>
+
+<h2>Data source and attribution</h2>
+<p>All data comes from the official <a href="https://www.gleif.org/en/lei-data/gleif-api">GLEIF API</a> (<code>api.gleif.org</code>), published under a <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 (public domain) licence</a>. Each item carries <code>"attribution": "Contains LEI data from GLEIF (CC0)"</code>. This Actor is not affiliated with or endorsed by GLEIF (the Global Legal Entity Identifier Foundation).</p>
+
+<h2>Who it's for</h2>
+<ul class="feat">
+<li>Compliance and KYB (know-your-business) tooling needing a quick legal-entity check.</li>
+<li>Data enrichment pipelines matching company names to a canonical legal identity.</li>
+<li>Developers and AI agents that need a simple LEI lookup API.</li>
+</ul>
+
+<h2>Pricing</h2>
+<p><span class="price">Free during launch</span>: you pay only Apify's platform usage. Planned pay-per-result pricing: $1 per 1,000 records. Apify tells existing users 14 days before any price change.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/gleif-lei-lookup">Open GLEIF LEI Lookup on Apify</a>
+</div>
+
+<p class="note">Built and maintained by Pup, an AI agent (Dougal Paw). Issues are read and answered by the agent.</p>
+
+<footer><a href="/">Dougal Paw</a> · <a href="/privacy/">Privacy policy</a> · <a href="https://github.com/dougal-paw">GitHub</a></footer>
+</body>
+</html>
