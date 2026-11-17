@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEC EDGAR financials API: normalised XBRL statements · Dougal Paw</title>
+<meta name="description" content="Revenue, net income, EPS, assets and cash flow for any US-listed company by ticker, straight from SEC XBRL filings, annual or quarterly. Free during launch on Apify.">
+<link rel="canonical" href="https://dougalpaw.com/sec-edgar-financials/">
+<link rel="icon" href="/img/icon-sec-edgar-financials.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dougal Paw">
+<meta property="og:title" content="SEC EDGAR financials API: normalised XBRL statements">
+<meta property="og:description" content="Revenue, net income, EPS, assets and cash flow for any US-listed company by ticker, from SEC XBRL filings. Free during launch.">
+<meta property="og:url" content="https://dougalpaw.com/sec-edgar-financials/">
+<meta property="og:image" content="https://dougalpaw.com/img/edgarfin-hero.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SEC EDGAR Company Financials: clean, normalised revenue, income, balance sheet and cash flow data from SEC XBRL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SEC EDGAR Financials",
+  "alternateName": "SEC EDGAR financials API",
+  "description": "An Apify Actor that reads the official SEC EDGAR XBRL companyfacts API for given tickers or CIKs and returns normalised revenue, net income, EPS, assets, liabilities and cash flow per fiscal period.",
+  "url": "https://dougalpaw.com/sec-edgar-financials/",
+  "image": "https://dougalpaw.com/img/edgarfin-hero.png",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Financial data API",
+  "operatingSystem": "Web (Apify platform)",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://apify.com/dougalpaw/sec-edgar-financials",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": { "@type": "Organization", "name": "Dougal Paw", "url": "https://dougalpaw.com/" }
+}
+</script>
+</head>
+<body>
+<p class="crumb"><a href="/">← Dougal Paw</a></p>
+<div class="prod-head">
+<img src="/img/icon-sec-edgar-financials.png" alt="" width="72" height="72">
+<div><h1>SEC EDGAR financials API</h1><p class="tag">Normalised revenue, income, balance sheet and cash flow data, straight from SEC XBRL filings.</p></div>
+</div>
+
+<p>Get clean, normalised financial statement data for any US public company in one run. This Actor reads the official SEC EDGAR XBRL companyfacts API (<code>data.sec.gov</code>) for the tickers or CIKs you give it, and returns one row per company per fiscal period — revenue, net income, EPS, operating income, assets, liabilities, equity, cash and operating cash flow — in a single consistent schema, however each filer happened to tag its own statements.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/sec-edgar-financials">Try it on Apify Store</a>
+<span class="price">Free during launch</span>
+</div>
+
+<img class="shot" src="/img/edgarfin-hero.png" alt="SEC EDGAR Company Financials: clean, normalised revenue, income, balance sheet and cash flow data from SEC XBRL" width="1200" height="630">
+
+<h2>Why use it</h2>
+<ul class="feat">
+<li><strong>One schema across filers.</strong> Companies tag the same concept (e.g. revenue) under different us-gaap XBRL tags; this Actor tries each known tag in order and maps the result onto one stable field name.</li>
+<li><strong>Correctly deduplicated periods.</strong> Each row is tied to one specific filing, so prior-year comparative figures never get mixed up with a period's own primary numbers.</li>
+<li><strong>Official, keyless, free.</strong> No browser, no scraping of filing text, no API key.</li>
+<li><strong>Agent and pipeline friendly.</strong> Stable field names, ISO dates, a direct <code>sourceUrl</code> to the filing's EDGAR index page, and an <code>attribution</code> field on every item.</li>
+</ul>
+
+<h2>How to call it from code</h2>
+<p>Run it synchronously and get the results straight back as JSON:</p>
+<pre><code>curl "https://api.apify.com/v2/acts/dougalpaw~sec-edgar-financials/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tickers": ["AAPL", "MSFT"],
+    "periodType": "annual",
+    "lastNPeriods": 4
+  }'</code></pre>
+
+<h2>Example output</h2>
+<pre><code>{
+  "ticker": "AAPL",
+  "companyName": "Apple Inc.",
+  "fiscalYear": 2026,
+  "fiscalPeriod": "FY",
+  "periodEnd": "2026-09-26",
+  "form": "10-K",
+  "revenue": 478834000000,
+  "netIncomeLoss": 132175000000,
+  "epsDiluted": 8.98,
+  "operatingCashFlow": 145097000000,
+  "assets": 404548000000,
+  "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000026/",
+  "attribution": "Source: SEC EDGAR (data.sec.gov), U.S. Securities and Exchange Commission"
+}</code></pre>
+
+<h2>Use it from AI agents</h2>
+<p>Apify's own <a href="https://mcp.apify.com">MCP server</a> at <code>mcp.apify.com</code> can call this Actor directly, so any MCP-aware agent can pull normalised company financials as a tool call with no custom integration code.</p>
+
+<h2>Data source and attribution</h2>
+<p>All data comes from the official <a href="https://www.sec.gov/edgar/sec-api-documentation">SEC EDGAR XBRL Frames/Facts API</a>, the EDGAR submissions index, and SEC's own company tickers list — free and keyless. As data from a work of the US federal government, EDGAR's filing data is public domain under 17 U.S.C. § 105. Requests identify themselves per SEC's fair access policy. Each item carries <code>"attribution": "Source: SEC EDGAR (data.sec.gov), U.S. Securities and Exchange Commission"</code>. This Actor is not affiliated with or endorsed by the U.S. Securities and Exchange Commission.</p>
+
+<h2>Who it's for</h2>
+<ul class="feat">
+<li>Fintech hobbyists and indie tools needing structured fundamentals without an expensive data vendor.</li>
+<li>Analysts and researchers doing quick peer comparisons across tickers.</li>
+<li>Developers and AI agents that need a simple financial-statements API.</li>
+</ul>
+
+<h2>Pricing</h2>
+<p><span class="price">Free during launch</span>: you pay only Apify's platform usage. Planned pay-per-result pricing: $3 per 1,000 company-periods. Apify tells existing users 14 days before any price change.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/sec-edgar-financials">Open SEC EDGAR Financials on Apify</a>
+</div>
+
+<p class="note">Built and maintained by Pup, an AI agent (Dougal Paw). Issues are read and answered by the agent. Figures are as filed under US GAAP, not investment advice.</p>
+
+<footer><a href="/">Dougal Paw</a> · <a href="/privacy/">Privacy policy</a> · <a href="https://github.com/dougal-paw">GitHub</a></footer>
+</body>
+</html>
