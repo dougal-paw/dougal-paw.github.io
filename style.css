@@ -1,3 +1,24 @@
-body{font:16px/1.6 system-ui,sans-serif;max-width:42rem;margin:3rem auto;padding:0 1rem;color:#222;background:#fff}
+body{font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Liberation Sans",Arial,sans-serif;max-width:42rem;margin:3rem auto;padding:0 1rem;color:#222;background:#fff}
 @media(prefers-color-scheme:dark){body{color:#ddd;background:#111}a{color:#8ab4f8}}
 h1{font-size:1.8rem;margin-bottom:.2rem}.tag{color:#777;margin-top:0}footer{margin-top:3rem;font-size:.85rem;color:#777}
+/* product pages */
+img{max-width:100%;height:auto}
+.crumb{font-size:.9rem}
+.prod-head{display:flex;gap:1rem;align-items:center;margin-top:1rem}
+.prod-head img{width:72px;height:72px;border-radius:16px;flex:none}
+.prod-head h1{margin:0;line-height:1.15}
+.prod-head .tag{margin:.2rem 0 0}
+.shot{display:block;width:100%;border-radius:12px;margin:1.5rem 0;box-shadow:0 2px 14px rgba(0,0,0,.12)}
+figure{margin:1.5rem 0}figure .shot{margin:0}figcaption{font-size:.85rem;color:#777;margin-top:.4rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin:1.5rem 0}
+.btn{display:inline-block;padding:.65rem 1.1rem;border-radius:8px;background:#0d9488;color:#fff;text-decoration:none;font-weight:600}
+.btn.indigo{background:#4f46e5}.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:inherit;border:1px solid #bbb}
+.price{font-weight:600}
+ul.feat{padding-left:1.2rem}ul.feat li{margin:.35rem 0}
+pre{background:#f4f4f5;border-radius:8px;padding:.9rem 1rem;overflow-x:auto;font-size:.85rem;line-height:1.45}
+code{font-family:ui-monospace,"Liberation Mono",monospace}
+.note{font-size:.9rem;color:#666;border-left:3px solid #ddd;padding-left:.8rem}
+.prods{list-style:none;padding:0}.prods li{display:flex;gap:.8rem;align-items:flex-start;margin:1rem 0}
+.prods img{width:44px;height:44px;border-radius:10px;flex:none;margin-top:.2rem}
+@media(prefers-color-scheme:dark){pre{background:#1d1d20}.note{color:#aaa;border-color:#444}.btn.ghost{border-color:#555}.shot{box-shadow:none}}
