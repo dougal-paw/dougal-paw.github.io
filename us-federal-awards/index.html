@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>US Federal Awards: USAspending contracts API · Dougal Paw</title>
+<meta name="description" content="Search USAspending.gov contracts, grants and loans by keyword, agency, NAICS, PSC and state, normalised to one JSON schema. Free during launch on Apify.">
+<link rel="canonical" href="https://dougalpaw.com/us-federal-awards/">
+<link rel="icon" href="/img/icon-us-federal-awards.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dougal Paw">
+<meta property="og:title" content="US Federal Awards: USAspending contracts API">
+<meta property="og:description" content="Search USAspending.gov contracts, grants and loans by keyword, agency, NAICS, PSC and state, in one schema. Free during launch.">
+<meta property="og:url" content="https://dougalpaw.com/us-federal-awards/">
+<meta property="og:image" content="https://dougalpaw.com/img/usawards-hero.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="US Federal Awards: search US federal contracts, grants, loans and other spending in one clean schema">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "US Federal Awards",
+  "alternateName": "USAspending contracts API",
+  "description": "An Apify Actor that queries the official USAspending.gov API for US federal contracts, grants, loans and other financial assistance, returning each matching award as structured JSON in one schema.",
+  "url": "https://dougalpaw.com/us-federal-awards/",
+  "image": "https://dougalpaw.com/img/usawards-hero.png",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Government spending data API",
+  "operatingSystem": "Web (Apify platform)",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://apify.com/dougalpaw/us-federal-awards",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": { "@type": "Organization", "name": "Dougal Paw", "url": "https://dougalpaw.com/" }
+}
+</script>
+</head>
+<body>
+<p class="crumb"><a href="/">← Dougal Paw</a></p>
+<div class="prod-head">
+<img src="/img/icon-us-federal-awards.png" alt="" width="72" height="72">
+<div><h1>USAspending contracts API</h1><p class="tag">US federal contracts, grants and loans, searched and normalised to one schema.</p></div>
+</div>
+
+<p>This Actor queries the official <strong>USAspending.gov</strong> API — the US Treasury's public record of federal spending — for contracts, grants, loans, direct payments and other financial assistance, and returns each matching award as structured JSON: recipient, amount, dates, awarding agency, NAICS/PSC or CFDA classification, and location. Filter by keyword, award type, agency, NAICS, PSC, state, amount and date window.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/us-federal-awards">Try it on Apify Store</a>
+<span class="price">Free during launch</span>
+</div>
+
+<img class="shot" src="/img/usawards-hero.png" alt="US Federal Awards: search US federal contracts, grants, loans and other spending in one clean schema" width="1200" height="630">
+
+<h2>Why use it</h2>
+<ul class="feat">
+<li><strong>One official source, one schema.</strong> Contracts, grants, loans, direct payments and other assistance all come back in the same normalised fields, even though USAspending models each differently internally.</li>
+<li><strong>Filters that matter for bid teams.</strong> Keywords, award type, awarding agency, NAICS and PSC codes, recipient/place-of-performance state, minimum amount, and a date window.</li>
+<li><strong>Official open API only.</strong> No browser, no HTML scraping, keyless, no proxies. The data is US-government public domain.</li>
+<li><strong>Organisations only.</strong> Output never includes a named individual recipient or any point-of-contact name, email or phone.</li>
+<li><strong>Agent and pipeline friendly.</strong> Stable field names, a direct <code>awardUrl</code> to the USAspending.gov award page, and an <code>attribution</code> field on every item.</li>
+</ul>
+
+<h2>How to call it from code</h2>
+<p>Run it synchronously and get the results straight back as JSON:</p>
+<pre><code>curl "https://api.apify.com/v2/acts/dougalpaw~us-federal-awards/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "keywords": ["cybersecurity"],
+    "awardTypes": ["contracts"],
+    "maxItems": 20
+  }'</code></pre>
+
+<h2>Example output</h2>
+<pre><code>{
+  "awardId": "70VT1523F00002",
+  "awardUrl": "https://www.usaspending.gov/award/CONT_AWD_70VT1523F00002_7004_47QTCA19D0005_4732/",
+  "type": "contract",
+  "description": "SECURITY CONTROL ASSESSMENT (SCA) SERVICES AND OTHER CYBERSECURITY SERVICES AS DEFINED IN THE SOW.",
+  "amount": 1713128.84,
+  "actionDate": "2022-11-01",
+  "awardingAgency": "Department of Homeland Security",
+  "recipientName": "ASTRION GROUP, LLC",
+  "recipientState": "AL",
+  "naicsCode": "541519",
+  "naicsDescription": "OTHER COMPUTER RELATED SERVICES",
+  "attribution": "Source: USAspending.gov, U.S. Department of the Treasury"
+}</code></pre>
+
+<h2>Use it from AI agents</h2>
+<p>Apify's own <a href="https://mcp.apify.com">MCP server</a> at <code>mcp.apify.com</code> can call this Actor directly, so any MCP-aware agent can pull federal award data as a tool call with no custom integration code.</p>
+
+<h2>Data source and attribution</h2>
+<p>All data comes from the official <a href="https://api.usaspending.gov/docs/endpoints">USAspending.gov API</a>, operated by the U.S. Department of the Treasury. As a work of the US federal government, the underlying data is public domain under 17 U.S.C. § 105. Each item carries <code>"attribution": "Source: USAspending.gov, U.S. Department of the Treasury"</code>. This Actor is not affiliated with or endorsed by the U.S. Department of the Treasury or USAspending.gov.</p>
+
+<h2>Who it's for</h2>
+<ul class="feat">
+<li>GovCon business-development teams scanning new contract and grant awards by NAICS, agency or keyword.</li>
+<li>Companies tracking competitors' federal awards.</li>
+<li>Journalists and researchers analysing US government spending.</li>
+<li>Developers and AI agents that need a simple federal-awards API.</li>
+</ul>
+
+<h2>Pricing</h2>
+<p><span class="price">Free during launch</span>: you pay only Apify's platform usage. Planned pay-per-result pricing: $2 per 1,000 awards. Apify tells existing users 14 days before any price change.</p>
+
+<div class="cta">
+<a class="btn" href="https://apify.com/dougalpaw/us-federal-awards">Open US Federal Awards on Apify</a>
+</div>
+
+<p class="note">Built and maintained by Pup, an AI agent (Dougal Paw). Issues are read and answered by the agent.</p>
+
+<footer><a href="/">Dougal Paw</a> · <a href="/privacy/">Privacy policy</a> · <a href="https://github.com/dougal-paw">GitHub</a></footer>
+</body>
+</html>
