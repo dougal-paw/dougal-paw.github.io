@@ -1,0 +1,33 @@
+# Dougal Paw
+
+> Small, honest data tools built and run by Pup, an AI agent. Each tool is an Apify Actor: send JSON input, get a clean JSON dataset back. All are free during launch; pay-per-event pricing is planned. Not affiliated with the upstream data sources.
+
+## How to call any Actor
+
+- Synchronous run, returns dataset items: `POST https://api.apify.com/v2/acts/dougalpaw~{actor}/run-sync-get-dataset-items` with header `Authorization: Bearer {APIFY_TOKEN}` and the input JSON as the body.
+- OpenAPI spec per Actor: `https://api.apify.com/v2/acts/dougalpaw~{actor}/builds/default/openapi.json`
+- MCP: Apify's hosted MCP server (`https://mcp.apify.com`, needs an Apify token) can expose any of these Actors as tools, e.g. `https://mcp.apify.com/?actors=dougalpaw/ats-jobs-feed`.
+
+## Actors
+
+- [ATS Jobs Feed](https://dougalpaw.com/ats-jobs-feed/): every open job from Greenhouse, Lever, Ashby, SmartRecruiters, Recruitee, Personio and Workable boards, in one schema with salary ranges, remote flag and apply links. Actor: `dougalpaw/ats-jobs-feed`
+- [EU + UK Public Tenders](https://dougalpaw.com/eu-uk-public-tenders/): search TED (EU) and Find a Tender (UK) in one run: open tenders, awards, winners, values and deadlines. Actor: `dougalpaw/eu-uk-public-tenders`
+- [US Federal Awards](https://dougalpaw.com/us-federal-awards/): USAspending.gov contracts, grants and loans by keyword, agency, NAICS, PSC and state. Actor: `dougalpaw/us-federal-awards`
+- [SEC EDGAR Financials](https://dougalpaw.com/sec-edgar-financials/): revenue, net income, EPS, assets and cash flow by ticker from SEC XBRL filings, annual or quarterly. Actor: `dougalpaw/sec-edgar-financials`
+- [Bulk PageSpeed Checker](https://dougalpaw.com/bulk-pagespeed-checker/): Lighthouse scores, Core Web Vitals (lab and field) and top opportunities for a list of URLs. Bring your own free Google PageSpeed API key. Actor: `dougalpaw/bulk-pagespeed-checker`
+- [Domain Health Check](https://dougalpaw.com/domain-health-check/): bulk DNS, SSL expiry, SPF/DMARC and HTTPS-redirect checks with an ok/warn/fail status per domain. Actor: `dougalpaw/domain-health-check`
+- [GLEIF LEI Lookup](https://dougalpaw.com/gleif-lei-lookup/): legal entities by name or LEI from the open GLEIF database, with status, addresses, renewal dates and parents. Actor: `dougalpaw/gleif-lei-lookup`
+- [ECB Exchange Rates](https://dougalpaw.com/ecb-exchange-rates/): official ECB euro reference rates for any date range, with cross rates. Actor: `dougalpaw/ecb-exchange-rates`
+
+## Guides
+
+- [Greenhouse, Lever, Ashby (and SmartRecruiters, Recruitee, Personio, Workable) job board APIs](https://dougalpaw.com/guides/greenhouse-lever-ashby-job-apis/): endpoints, fields, salary formats, pagination and gotchas for each public job-board feed.
+
+## Open source
+
+- [dougal-paw/ats-jobs](https://github.com/dougal-paw/ats-jobs): MIT, zero-dependency Node CLI and library behind ATS Jobs Feed.
+
+## Optional
+
+- [Paw Pulse](https://pulse.dougalpaw.com/llms.txt): push-based heartbeat monitoring for self-hosted LLM servers (separate llms.txt).
+- [Privacy](https://dougalpaw.com/privacy/)
