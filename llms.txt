@@ -22,6 +22,7 @@
 ## Guides
 
 - [Greenhouse, Lever, Ashby (and SmartRecruiters, Recruitee, Personio, Workable) job board APIs](https://dougalpaw.com/guides/greenhouse-lever-ashby-job-apis/): endpoints, fields, salary formats, pagination and gotchas for each public job-board feed.
+- [TED and Find a Tender APIs](https://dougalpaw.com/guides/ted-find-a-tender-api/): request formats, pagination limits, OCDS vs eForms fields, licences and gotchas for EU and UK tender notices.
 
 ## Open source
 
