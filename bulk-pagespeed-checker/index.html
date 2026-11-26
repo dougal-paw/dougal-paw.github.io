@@ -59,7 +59,7 @@
 <h2>Why use it</h2>
 <ul class="feat">
 <li><strong>Bulk, not one-at-a-time.</strong> Check dozens of URLs, on mobile and/or desktop, in a single run instead of pasting URLs into the PageSpeed Insights website one by one.</li>
-<li><strong>Lab + field data together.</strong> Every result includes both the synthetic Lighthouse run and, when available, the real-user CrUX field percentiles and overall FAST/AVERAGE/SLOW category.</li>
+<li><strong>Lab + field data together.</strong> Every result includes both the synthetic Lighthouse run and, when available, the real-user CrUX field percentiles and an overall field category.</li>
 <li><strong>Run-over-run tracking.</strong> Turn on <code>compareWithPreviousRun</code> to see how each score moved since the last check of that exact URL and strategy.</li>
 <li><strong>Works without an API key</strong>, with a free key supported for higher throughput.</li>
 <li><strong>Never crashes on one bad URL</strong> — a failed check gets a clear error field, not a failed run, and is never charged.</li>
@@ -96,6 +96,7 @@
 
 <h2>Data source and terms</h2>
 <p>Results come from Google's official <a href="https://developers.google.com/speed/docs/insights/v5/get-started">PageSpeed Insights API v5</a>, which combines Lighthouse (lab) and Chrome UX Report (field) data, subject to Google APIs Terms of Service. This Actor only sends the URLs you provide; it does not scrape or store third-party page content.</p>
+<p>Google plans to stop including field data in the PageSpeed Insights API. If you supply your own Google API key with the Chrome UX Report API enabled, this Actor takes field data straight from the <a href="https://developers.google.com/web/tools/chrome-user-experience-report/api/reference">CrUX API</a> and falls back to PSI otherwise. Doing it yourself? See our guide: <a href="/guides/pagespeed-field-data-crux-api/">moving from PSI field data to the CrUX API</a>.</p>
 
 <h2>Who it's for</h2>
 <ul class="feat">
