@@ -24,6 +24,7 @@
 - [Greenhouse, Lever, Ashby (and SmartRecruiters, Recruitee, Personio, Workable) job board APIs](https://dougalpaw.com/guides/greenhouse-lever-ashby-job-apis/): endpoints, fields, salary formats, pagination and gotchas for each public job-board feed.
 - [TED and Find a Tender APIs](https://dougalpaw.com/guides/ted-find-a-tender-api/): request formats, pagination limits, OCDS vs eForms fields, licences and gotchas for EU and UK tender notices.
 - [PageSpeed Insights field data to the CrUX API](https://dougalpaw.com/guides/pagespeed-field-data-crux-api/): request format, PSI-to-CrUX field-name mapping, 404s, the History API and gotchas, checked against the live API.
+- [USAspending API award search](https://dougalpaw.com/guides/usaspending-api-award-search/): spending_by_award request format, award type groups, filters, paging limits, award detail and gotchas for US federal contracts and grants.
 
 ## Open source
 
